@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magic 8-Ball</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #222;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    #ball {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      text-align: center;
+      padding: 20px;
+      transition: background 0.3s;
+    }
+    #answer {
+      font-size: 18px;
+      color: cyan;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="ball">
+    <div id="answer">Ask a question, then click me!</div>
+  </div>
+
+  <script>
+    const normalAnswers = [
+      "Yes", "No", "Ask again later", "Definitely",
+      "I don’t think so", "Absolutely!", "Not sure", "Try again"
+    ];
+
+    const goldenAnswers = [
+      "Hell yes!", "No way!", "Maybe, who cares?", "Absolutely f***ing!",
+      "Not in a million years!", "Sure, why not?", "Ask someone else"
+    ];
+
+    let useGolden = false; // default
+
+    // Gatekeeper logic
+    window.addEventListener('load', () => {
+      const isAdult = confirm("Are you 18 years of age or older?");
+      
+      if (isAdult) {
+        const wantsGolden = confirm("Do you want to use the Golden Magic 8-Ball? ⚡ (Profanity ahead)");
+        useGolden = wantsGolden; // true if yes, false if no
+        if (useGolden) {
+          alert("Golden Ball unlocked! Use wisely.");
+        }
+      } else {
+        alert("You will use the standard Black Magic 8-Ball.");
+        useGolden = false;
+      }
+    });
+
+    const ball = document.getElementById("ball");
+    const answer = document.getElementById("answer");
+
+    ball.addEventListener("click", () => {
+      const answers = useGolden ? goldenAnswers : normalAnswers;
+      const randomIndex = Math.floor(Math.random() * answers.length);
+      answer.textContent = answers[randomIndex];
+
+      // Optional: make the ball gold if Golden Ball is active
+      ball.style.background = useGolden ? "gold" : "black";
+    });
+  </script>
+</body>
+</html>
