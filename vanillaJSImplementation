@@ -47,8 +47,8 @@
     ];
 
     const goldenAnswers = [
-      "Hell yes!", "No way!", "Maybe, who cares?", "Absolutely f***ing!",
-      "Not in a million years!", "Sure, why not?", "Ask someone else"
+      "Hell yes!", "Fuck, no!", "Maybe, who the fuck cares?", "Abso-fucking-lutely!!",
+      "BAHAHAHAH!! Not in a million years, asshole!", "Sure, why the hell not?", "Bitch, I don't know!"
     ];
 
     let useGolden = false; // default
